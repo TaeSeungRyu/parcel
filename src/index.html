@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>index</title>
+        <include src="./common.html"></include>
+    </head>
+    <body>
+
+      <include src="./template/head.html"></include>
+      <include src="./template/left.html"></include>
+
+      <img src="./etc/test.png" width="200" height="400">
+      <a href="board.html" class='main'>go board page</a>
+      <button type='button' onclick="insert()">데이터 등록</button>
+      <button type='button' onclick="update()">데이터 수정</button>
+      <button type='button' onclick="dell()">데이터 삭제</button>
+
+      <br>
+      <br>
+      <input type="file" id='file'/>
+      <button type='button' onclick="fileUpload()">파일 업로드</button>
+    </body>
+</html>   
+
+
+<script>
+var clas = new parcelApp.MainClass();  
+clas.request('/api/getBoardData',{abcd:'1234'}, arg=>{
+    console.log(arg);
+})  
+  
+function insert(){
+    clas.request('/api/insertData',{parcel:'Im Parcel!', title:'파셀',contents : '컨텐츠'}, arg=>{
+        console.log(arg);
+    })      
+}
+
+function update(){
+    clas.request('/api/updateData',{_id:'5ff3fa2c0a3fac5b83cd32a6', title:'파셀dd',contents : '컨텐츠asdf', regDate : '2021-01-05 00:01:02'}, arg=>{
+        console.log(arg);
+    })      
+}
+
+function dell(){
+    clas.request('/api/deleteData',{_id:'5ff3fa2c0a3fac5b83cd32a6',  title:'파셀',contents : '컨텐츠'}, arg=>{
+        console.log(arg);
+    })      
+}
+
+function fileUpload(){
+    const param = new FormData();
+    param.append('title', '제목');
+    param.append('contents', '컴템츠,');
+    param.append('regDate', '2021-01-05 00:01:02');
+    param.append('file', $('#file')[0].files[0]);
+
+    clas.fileUpload('/api/uploadFileWithParam', param, arg=>{
+        console.log(arg);
+    })      
+}
+//Main에서 임포트 하였기 때문에 따로 index에서 사용안해도 동작하는 모습
+$('.main').text('gogogo board page');
+</script>
+  
+  

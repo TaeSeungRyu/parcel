@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>board</title>
+        <include src="./common.html"></include>
+    </head>
+    <body>
+
+      <include src="./template/head.html"></include>
+      <include src="./template/left.html"></include>
+
+      <a href="index.html" class='main'>go index page</a>
+    </body>
+</html>   
+
+
+
+<script>
+    var clas = new parcelApp.MainClass();  
+    clas.request('/api/testValid1',{abcd:'1234'}, arg=>{
+        console.log(arg);
+    })  
+    
+    //Main에서 임포트 하였기 때문에 따로 index에서 사용안해도 동작하는 모습
+    $('.main').text('gogogo board page');
+</script>
+  
+  

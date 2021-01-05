@@ -1,0 +1,20 @@
+{
+  "name": "parcel_conn_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "do": "echo \"Parcel bundler start!\" && node bundler.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6",
+    "parcel-bundler": "^1.12.4"
+  },
+  "devDependencies": {
+    "posthtml-include": "^1.6.0"
+  }
+}
